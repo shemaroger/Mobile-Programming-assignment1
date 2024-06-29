@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+# second
+=======
 # calculator
+>>>>>>> origin/main
 
 A new Flutter project.
 

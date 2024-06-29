@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
+    "name": "second",
+    "short_name": "second",
+=======
     "name": "calculator",
     "short_name": "calculator",
+>>>>>>> origin/main
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
