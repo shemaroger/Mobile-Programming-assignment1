@@ -18,19 +18,18 @@ class FirstPage extends StatelessWidget {
             return IconButton(
               icon: Icon(Icons.menu),
               onPressed: () {
-                Scaffold.of(context).openDrawer(); // Open the global drawer
+                Scaffold.of(context).openDrawer();
               },
             );
           },
         ),
       ),
-      drawer: AppDrawer(), // Call the global drawer here
+      drawer: AppDrawer(),
       body: SafeArea(
         child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage(
-                  'lib/images/background.jpg'), // Update with the path to your background image
+              image: AssetImage('lib/images/background.jpg'),
               fit: BoxFit.cover,
             ),
           ),

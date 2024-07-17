@@ -36,32 +36,32 @@ class AppDrawer extends StatelessWidget {
             leading: Icon(Icons.home),
             title: Text('Home'),
             onTap: () {
-              Navigator.pop(context); // Close drawer first
-              Navigator.pushNamed(context, '/welcome'); // Navigate to '/welcome'
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/');
             },
           ),
           ListTile(
             leading: Icon(Icons.login),
             title: Text('Login'),
             onTap: () {
-              Navigator.pop(context); // Close drawer first
-              Navigator.pushNamed(context, '/login'); // Navigate to '/login'
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/login');
             },
           ),
           ListTile(
             leading: Icon(Icons.person_add),
             title: Text('Signup'),
             onTap: () {
-              Navigator.pop(context); // Close drawer first
-              Navigator.pushNamed(context, '/signup'); // Navigate to '/signup'
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/signup');
             },
           ),
           ListTile(
             leading: Icon(Icons.calculate),
             title: const Text('Calculator'),
             onTap: () {
-              Navigator.pop(context); // Close drawer first
-              Navigator.pushNamed(context, '/calculator'); // Navigate to '/calculator'
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/calculator');
             },
           ),
         ],

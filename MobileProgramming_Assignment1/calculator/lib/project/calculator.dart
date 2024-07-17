@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:second/components/app_drawer.dart';
 
 class CalculatorPage extends StatefulWidget {
   @override
@@ -85,12 +86,10 @@ class _CalculatorPageState extends State<CalculatorPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(
-            255, 255, 255, 255), // Change app bar background color
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
         title: GestureDetector(
           onTap: () {
-            Navigator.popUntil(context,
-                ModalRoute.withName('/')); // Navigate back to home page
+            Navigator.popUntil(context, ModalRoute.withName('/'));
           },
           child: Text("Calculator"),
         ),
@@ -105,7 +104,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
         ],
       ),
       drawer: AppDrawer(),
-      backgroundColor: Colors.black, // Change scaffold background color
+      backgroundColor: Colors.black,
       body: Column(
         children: <Widget>[
           Container(
@@ -170,47 +169,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
               ),
             ],
           ),
-        ],
-      ),
-    );
-  }
-}
-
-class AppDrawer extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.black,
-            ),
-            child: Text(
-              'Menu',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 24,
-              ),
-            ),
-          ),
-          ListTile(
-            title: Text('Calculator'),
-            onTap: () {
-              Navigator.pop(context); // Close the drawer
-              // Navigate to CalculatorPage
-            },
-          ),
-          ListTile(
-            title: Text('Other Screen'),
-            onTap: () {
-              Navigator.pop(context); // Close the drawer
-              Navigator.pushNamed(
-                  context, '/login_page'); // Replace with your route
-            },
-          ),
-          // Add more ListTile widgets for additional screens
         ],
       ),
     );

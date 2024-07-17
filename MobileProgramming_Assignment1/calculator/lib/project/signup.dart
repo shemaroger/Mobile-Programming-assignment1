@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:second/components/my_button.dart';
 import 'package:second/components/my_textfield.dart';
 import 'package:second/components/app_drawer.dart';
+import 'package:second/services/auth_service.dart';
 
 class SignupPage extends StatelessWidget {
   SignupPage({Key? key}) : super(key: key);
@@ -10,9 +11,58 @@ class SignupPage extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
+  final AuthService _authService = AuthService();
 
-  void registerUser() {
-    // Implement your registration logic here
+  void registerUser(BuildContext context) async {
+    // Show loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Center(child: CircularProgressIndicator());
+      },
+    );
+
+    // Check if passwords match
+    if (passwordController.text != confirmPasswordController.text) {
+      // Pop loading circle
+      Navigator.pop(context);
+      // Show error message
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text('Passwords do not match'),
+          );
+        },
+      );
+      return;
+    }
+
+    // Try sign up
+    try {
+      await _authService.signUpWithEmailAndPassword(
+        emailController.text,
+        passwordController.text,
+      );
+      // Pop loading circle
+      Navigator.pop(context);
+      // Navigate to home page
+      Navigator.pushReplacementNamed(context, '/');
+    } catch (e) {
+      // Pop loading circle
+      Navigator.pop(context);
+      // Show error message
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Error'),
+            content: Text(e.toString()),
+          );
+        },
+      );
+    }
   }
 
   @override
@@ -39,8 +89,7 @@ class SignupPage extends StatelessWidget {
           Container(
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage(
-                    'lib/images/sign.jpg'), // Replace with your background image path
+                image: AssetImage('lib/images/sign.jpg'),
                 fit: BoxFit.cover,
               ),
             ),
@@ -90,7 +139,7 @@ class SignupPage extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 MyButton(
-                  onTap: registerUser,
+                  onTap: () => registerUser(context),
                   text: 'Register',
                 ),
                 SizedBox(height: 20),
